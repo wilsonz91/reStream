@@ -10,11 +10,12 @@ reMarkable screen sharing over SSH.
 ## Installation
 
 1. Clone this repository: `git clone https://github.com/rien/reStream`.
-2. Install `lz4` on your host with your usual package manager. On Ubuntu,
-`apt install liblz4-tool` will do the trick.
-3. [Set up an SSH key and add it to the ssh-agent](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), then add your key to the reMarkable with `ssh-copy-id root@10.11.99.1`. **Note:** the reMarkable 2 doesn't support `ed25519` keys, those users should generate and `rsa` key.
+2. Install `lz4` and `ffmpeg` on your host with your usual package manager. On Ubuntu,
+`apt install liblz4-tool` and `apt install ffmpeg` will do the trick.
+3. [Set up an SSH key and add it to the ssh-agent](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), then add your key to the reMarkable with `ssh-copy-id root@10.11.99.1`. **Note:** the reMarkable 2 doesn't support `ed25519` keys, those users should generate and `rsa` key. reMarkable's SSH password can be found at `Menu>Settings>Help>Copyrights and Licenses` under the GPLv3 Compliance heading.
 4. Copy the `restream` executable to the reMarkable and make it executable.
     ```
+    # cd reStream
     # scp restream.arm.static root@10.11.99.1:/home/root/restream
     # ssh root@10.11.99.1 'chmod +x /home/root/restream'
     ```
@@ -43,7 +44,7 @@ If you have problems, don't hesitate to [open an issue](https://github.com/rien/
 
 On your **host** machine:
 - Any POSIX-shell (e.g. bash)
-- ffmpeg (with ffplay)
+- ffmpeg (with ffplay) (sudo apt install ffmpeg)
 - ssh
 - Video4Linux loopback kernel module if you want to use `--webcam`
 
